@@ -87,8 +87,8 @@ void EmergencyRoom::updateDoctors()
 
 		}
 		
-		//this check isn't strictly necessary, but it improves efficiency in the case that only a doctor was free
-		if (!medicsFree())
+		//re check the while condition
+		if (patientsUnder10.empty())
 			break;
 
 		//now we are just treating all under 10 patients with any medic
@@ -145,8 +145,9 @@ void EmergencyRoom::update() //Adds a new patient if necessary, and then calls u
 void EmergencyRoom::listNames()
 {
 	//iterate through the Record and output all the names (which are the keys to the map in this case)
-	for (std::map<std::string, std::list<int>>::iterator it = Record.begin(), int i = 0; // i is used to output an endline every 10 entries
-		 it != Record.end(); i++, ++it) {
+	std::map<std::string, std::list<int>>::iterator it = Record.begin();
+	int i = 0;
+	for (;it != Record.end(); i++, ++it) {
 		std::cout << it->first << ", ";
 		if (i % 10 == 0 && i != 0)
 			std::cout << std::endl;
