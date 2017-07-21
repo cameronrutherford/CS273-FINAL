@@ -87,8 +87,8 @@ void EmergencyRoom::updateDoctors()
 
 		}
 		
-		//re check the while condition
-		if (patientsUnder10.empty())
+		//re check the necessary parts of the while condition
+		if (!medicsFree() || patientsUnder10.empty())
 			break;
 
 		//now we are just treating all under 10 patients with any medic

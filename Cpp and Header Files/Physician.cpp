@@ -8,7 +8,7 @@
 std::pair<bool, Patient> Physician::update(long long int clock) //Returns true if the patient is finished treating, and then the returned patient is used to create a record
 														        //If the patient still isn't done being treated, false is returned with a default patient object
 {
-	if (clock - currentTreatmentTime == currentPatient.getArrivalTime()) { //if we are done treating current patient
+	if (clock - currentTreatmentTime >= currentPatient.getArrivalTime()) { //if we are done treating current patient
 
 		//update the physician and doctor's data to be done with treatment
 		currentPatient.setDepartureTime(clock);
